@@ -7,22 +7,24 @@
 <meta name="description" content="Freela — moda va kreativ sanoat uchun frilanser platformasi. Dizayner, konstruktor, stilist, fotograf va boshqa moda mutaxassislarini loyihalar bilan bog'laymiz.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    FREELA — editorial-style freelance marketplace
    ============================================================ */
 :root{
-  --paper:#F7F5F1;
-  --surface:#FFFFFF;
-  --ink:#111111;
-  --muted:#6b6b64;
-  --rule:rgba(17,17,17,.16);
-  --rule-soft:rgba(17,17,17,.10);
-  --accent:#B2231B;
-  --accent-2:#1F3A2E;
+  --paper:#F5EFE6;
+  --surface:#FBF7F0;
+  --ink:#241B18;
+  --muted:#8a7a6d;
+  --rule:rgba(36,27,24,.18);
+  --rule-soft:rgba(36,27,24,.11);
+  --accent:#7A1F2B;
+  --accent-2:#B08D57;
+  --blush:#E7CBC4;
 
-  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --serif:"Bodoni Moda",Georgia,"Times New Roman",serif;
+  --serif-alt:"Cormorant Garamond",Georgia,serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 
   --content:1320px;
@@ -51,7 +53,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:10px}
 .kicker::before{content:"";width:22px;height:1px;background:var(--accent)}
 .serif{font-family:var(--serif)}
-.serif-i{font-family:var(--serif);font-style:italic;font-weight:500}
+.serif-i{font-family:var(--serif-alt);font-style:italic;font-weight:500;color:var(--accent)}
 .h2{font-family:var(--serif);font-weight:600;font-size:clamp(34px,4.6vw,58px);line-height:1.04;letter-spacing:-.01em}
 .lede{font-size:17px;line-height:1.7;color:var(--muted);max-width:52ch}
 
@@ -77,11 +79,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 .mobile-menu a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
 
 /* ---- duotone plate (stand-in for editorial photography) ---- */
-.plate{position:relative;overflow:hidden;background:#1a1a1a;isolation:isolate}
+.plate{position:relative;overflow:hidden;background:#241418;isolation:isolate}
 .plate::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(85% 70% at 20% 15%, #3a2f28, transparent 60%),
-  radial-gradient(90% 70% at 85% 90%, #24211c, transparent 55%),
-  linear-gradient(160deg,#141414,#232019 60%,#161311)}
+  radial-gradient(85% 70% at 20% 15%, #5c2430, transparent 60%),
+  radial-gradient(90% 70% at 85% 90%, #7a5a30, transparent 55%),
+  linear-gradient(160deg,#1c1214,#2c1a1e 60%,#1a1113)}
 .plate::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);background-size:3px 3px;mix-blend-mode:overlay}
 .plate-caption{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;margin-top:10px}
 
@@ -127,7 +129,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .contents-row{display:grid;grid-template-columns:64px 1fr auto auto;align-items:center;gap:24px;padding:22px 0;border-top:1px solid var(--rule);transition:padding-left .25s ease}
 .contents-row:last-child{border-bottom:1px solid var(--rule)}
 .contents-row:hover{padding-left:10px;background:linear-gradient(90deg,rgba(17,17,17,.03),transparent)}
-.contents-num{font-family:var(--serif);font-size:14px;color:var(--muted)}
+.contents-num{font-family:var(--serif);font-size:14px;color:var(--accent-2)}
 .contents-name{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.4vw,28px)}
 .contents-count{font-size:12px;color:var(--muted);letter-spacing:.04em}
 .contents-go{font-size:18px;transition:transform .25s ease}
@@ -144,6 +146,17 @@ ul,ol{margin:0;padding:0;list-style:none}
 .steprow .num{font-family:var(--serif);font-style:italic;font-size:40px;color:var(--rule)}
 .steprow h3{font-family:var(--serif);font-size:22px;font-weight:600}
 .steprow p{margin-top:8px;color:var(--muted);max-width:56ch}
+
+/* ---- ECOSYSTEM ---- */
+.ecogrid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);margin-top:32px}
+@media (max-width:780px){.ecogrid{grid-template-columns:1fr}}
+.ecoitem{padding:30px 36px 30px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:60px 1fr;gap:20px}
+.ecogrid > .ecoitem:nth-child(odd){border-right:1px solid var(--rule);padding-right:36px}
+.ecogrid > .ecoitem:nth-child(even){padding-left:36px}
+@media (max-width:780px){.ecogrid > .ecoitem:nth-child(odd){border-right:none;padding-right:0}.ecogrid > .ecoitem:nth-child(even){padding-left:0}}
+.ecoitem .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--accent-2)}
+.ecoitem h3{font-family:var(--serif);font-size:21px;font-weight:600}
+.ecoitem p{margin-top:8px;color:var(--muted);font-size:14px;max-width:44ch}
 
 /* ---- FEATURED (The Edit) ---- */
 .edit-head{margin-bottom:8px}
@@ -233,6 +246,7 @@ footer{border-top:1px solid var(--ink)}
   <div class="container header-inner">
     <nav class="nav" aria-label="Asosiy">
       <a href="#contents">Yo'nalishlar</a>
+      <a href="#ecosystem">Ekotizim</a>
       <a href="#briefs">Loyihalar</a>
       <a href="#edit">Frilanserlar</a>
     </nav>
@@ -248,6 +262,7 @@ footer{border-top:1px solid var(--ink)}
   <div class="mobile-menu" id="mobileMenu">
     <div class="container">
       <a href="#contents">Yo'nalishlar</a>
+      <a href="#ecosystem">Ekotizim</a>
       <a href="#briefs">Loyihalar</a>
       <a href="#edit">Frilanserlar</a>
       <a href="#pricing">Narxlar</a>
@@ -324,6 +339,14 @@ footer{border-top:1px solid var(--ink)}
       <button class="tabbtn" data-tab="freelancer" role="tab" aria-selected="false">Frilanser</button>
     </div>
     <div class="stepscol" id="stepsCol"></div>
+  </section>
+
+  <!-- ============ ECOSYSTEM ============ -->
+  <section id="ecosystem" class="section-tight container reveal" style="scroll-margin-top:110px">
+    <p class="kicker">Bitta platforma — butun ekotizim</p>
+    <h2 class="h2" style="margin-top:14px">Alohida ish emas — <span class="serif-i">yagona ijod ekotizimi.</span></h2>
+    <p class="lede" style="margin-top:16px">Freela faqat ijodkor va brendni bog'lamaydi — dizaynerga jamoa, brendga masshtab va O'zbekiston moda sanoatiga xalqaro chiqish yo'lini beradi.</p>
+    <div class="ecogrid" id="ecoGrid"></div>
   </section>
 
   <!-- ============ THE EDIT (freelancers) ============ -->
@@ -472,6 +495,20 @@ document.querySelectorAll('.tabbtn').forEach(btn => {
     renderSteps(btn.dataset.tab);
   });
 });
+
+const ECOSYSTEM = [
+  {t:"Creative Coworking", d:"Mustaqil ish, hamkor izlash va birgalikdagi loyihalarni ishga tushirish uchun ochiq maydon — kundalik uchrashuv nuqtasi."},
+  {t:"Ustaxona", d:"Eskizdan namunagacha: prototip yaratish, material sinovi va seriyali ishlab chiqarishga tayyorgarlik uchun tajriba sexi."},
+  {t:"Ta'lim", d:"Kurslar, intensivlar va xalqaro dasturlar — amaliy natijaga qaratilgan, yangi avlod mutaxassislarini tayyorlash."},
+  {t:"Model maktabi", d:"Yangi yuzlar uchun professional muhit — pozalash, podium va rezident-dizaynerlar bilan to'g'ridan-to'g'ri ish."},
+  {t:"Media va prodakshn", d:"Fotostudiya, operatorlik va o'z tahririyati — kataloglardan reels'gacha kontentni ichkarida yarating."},
+  {t:"Xalqaro hamkorlik", d:"Xalqaro media va diplomatik korpus bilan to'g'ridan-to'g'ri aloqa orqali brendni dunyoga tanitish."},
+];
+document.getElementById('ecoGrid').innerHTML = ECOSYSTEM.map((e,i) => `
+  <div class="ecoitem">
+    <div class="num">${String(i+1).padStart(2,'0')}</div>
+    <div><h3>${e.t}</h3><p>${e.d}</p></div>
+  </div>`).join('');
 
 const TALENTS = [
   {name:'Malika Yusupova', role:'Moda dizayneri', rating:'4.9', rate:'$35/soat', jobs:'46', skills:['Kolleksiya','Eskiz','Kutyur'], desc:"Kelinlik va kutyur kolleksiyalarini eskizdan podiumgacha olib boradi."},
