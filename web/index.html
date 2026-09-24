@@ -3,277 +3,255 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Freela — frilanser platformasi</title>
-<meta name="description" content="Freela — O'zbekistondagi frilanser platformasi. Dasturchi, dizayner, marketolog, video montajchi va boshqa mutaxassislarni toping yoki loyihalar uchun ariza qoldiring.">
+<title>Freela</title>
+<meta name="description" content="Freela — O'zbekistondagi frilanser platformasi. Dasturchi, dizayner, marketolog va boshqa mutaxassislarni loyihalar bilan bog'laymiz.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   FREELA — general freelance marketplace
-   Design tokens
+   FREELA — editorial-style freelance marketplace
    ============================================================ */
 :root{
-  --background:#FAFAF8;
+  --paper:#F7F5F1;
   --surface:#FFFFFF;
-  --foreground:#111111;
-  --muted:#666666;
-  --border:rgba(17,17,17,0.10);
-  --border-soft:rgba(17,17,17,0.07);
+  --ink:#111111;
+  --muted:#6b6b64;
+  --rule:rgba(17,17,17,.16);
+  --rule-soft:rgba(17,17,17,.10);
+  --accent:#B2231B;
+  --accent-2:#1F3A2E;
 
-  --magenta:#FF3DAF;
-  --violet:#8B5CF6;
-  --lime:#DFFF45;
-  --green:#1A9E5C;
-  --ink:#0E0E10;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 
-  --radius-sm:8px;
-  --radius-md:16px;
-  --radius-lg:24px;
-  --radius-xl:36px;
-
-  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px;
-  --s6:32px; --s7:48px; --s8:64px; --s9:96px;
-
-  --content:1280px;
-
-  --display:"Instrument Serif",Georgia,"Times New Roman",serif;
-  --ui:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-
-  --shadow-sm:0 1px 2px rgba(17,17,17,.04), 0 4px 16px rgba(17,17,17,.05);
-  --shadow-md:0 2px 6px rgba(17,17,17,.05), 0 18px 40px rgba(17,17,17,.08);
+  --content:1320px;
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;overflow-x:clip}
+html{overflow-x:clip}
 body{
-  margin:0;background:var(--background);color:var(--foreground);
-  font-family:var(--ui);font-size:16px;line-height:1.55;
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.55;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 img,svg{display:block;max-width:100%}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 a{color:inherit;text-decoration:none}
 h1,h2,h3,h4,p,figure{margin:0}
-ul{margin:0;padding:0;list-style:none}
-:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:4px}
+ul,ol{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-.container{width:100%;max-width:var(--content);margin-inline:auto;padding-inline:24px}
-.section{padding-block:var(--s9)}
-@media (max-width:720px){.section{padding-block:var(--s7)}}
+.container{width:100%;max-width:var(--content);margin-inline:auto;padding-inline:28px}
+.section{padding-block:104px}
+.section-tight{padding-block:72px}
+@media (max-width:720px){.section{padding-block:64px}.section-tight{padding-block:48px}}
 
-.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--muted)}
-.display{font-family:var(--display);font-weight:400;letter-spacing:-.02em;line-height:.98}
-.serif-em{font-family:var(--display);font-style:italic;background:linear-gradient(90deg,var(--violet),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
-.h2{font-size:clamp(32px,4.4vw,54px)}
-.lede{font-size:17px;line-height:1.65;color:var(--muted);max-width:56ch}
+.rule{border:none;border-top:1px solid var(--rule);margin:0}
+.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:22px;height:1px;background:var(--accent)}
+.serif{font-family:var(--serif)}
+.serif-i{font-family:var(--serif);font-style:italic;font-weight:500}
+.h2{font-family:var(--serif);font-weight:600;font-size:clamp(34px,4.6vw,58px);line-height:1.04;letter-spacing:-.01em}
+.lede{font-size:17px;line-height:1.7;color:var(--muted);max-width:52ch}
 
-/* buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;border-radius:999px;padding:13px 22px;font-size:14.5px;font-weight:600;white-space:nowrap;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s,color .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn:active{transform:scale(.98)}
-.btn-dark{background:var(--ink);color:#fff}
-.btn-dark:hover{box-shadow:0 12px 30px rgba(17,17,17,.22)}
-.btn-ghost{background:transparent;border-color:var(--foreground)}
-.btn-ghost:hover{background:var(--foreground);color:#fff}
-.btn-grad{background:linear-gradient(90deg,var(--violet),var(--magenta));color:#fff}
-.btn-grad:hover{box-shadow:0 14px 34px rgba(255,61,175,.3)}
-.btn-sm{padding:9px 16px;font-size:13px}
-
-/* pill/tag */
-.tag{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:12.5px;color:var(--muted);background:var(--surface)}
-
-/* header */
-.header{position:sticky;top:0;z-index:60;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
-.header.is-stuck{background:rgba(250,250,248,.85);backdrop-filter:blur(14px) saturate(1.3);border-bottom-color:var(--border)}
-.header-inner{display:flex;align-items:center;gap:28px;height:74px}
-.logo{font-family:var(--display);font-size:27px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:8px}
-.logo b{font-weight:400}
-.logo .badge{font-family:var(--ui);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--ink);padding:3px 7px;border-radius:5px;transform:translateY(-3px)}
-.nav{display:flex;gap:22px;margin-inline:auto}
-.nav a{font-size:14px;color:#2a2a2a;position:relative;padding:6px 0}
-.nav a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--magenta);transition:width .25s ease}
+/* ---- masthead ---- */
+.masthead-top{border-bottom:1px solid var(--rule)}
+.masthead-top .container{display:flex;align-items:center;justify-content:space-between;height:38px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--rule)}
+.header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:92px;gap:16px}
+.wordmark{font-family:var(--serif);font-weight:700;font-size:34px;letter-spacing:-.01em;text-align:center;grid-column:2}
+.nav{display:flex;gap:26px;grid-column:1}
+.nav a{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--ink);transition:width .25s ease}
 .nav a:hover::after{width:100%}
-.header-actions{display:flex;align-items:center;gap:10px}
-.burger{display:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);display:none;align-items:center;justify-content:center}
-@media (max-width:920px){.nav{display:none}.hdr-cta-desktop{display:none}.burger{display:flex}}
-.mobile-menu{display:none;border-top:1px solid var(--border);background:rgba(255,255,255,.98)}
+.header-actions{grid-column:3;display:flex;justify-content:flex-end;align-items:center;gap:18px}
+.hdr-link{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.btn-line{border:1px solid var(--ink);padding:10px 20px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;transition:background .2s,color .2s}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+.burger{display:none}
+@media (max-width:960px){.nav,.hdr-link{display:none}.burger{display:flex;width:36px;height:36px;align-items:center;justify-content:center;grid-column:1}}
+.mobile-menu{display:none;border-top:1px solid var(--rule)}
 .mobile-menu.open{display:block}
-.mobile-menu .container{padding-block:18px;display:flex;flex-direction:column;gap:14px}
-.mobile-menu a{font-size:15px}
+.mobile-menu .container{padding-block:16px;display:flex;flex-direction:column;gap:14px}
+.mobile-menu a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
 
-/* icon circle */
-.ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--border);flex:none}
+/* ---- duotone plate (stand-in for editorial photography) ---- */
+.plate{position:relative;overflow:hidden;background:#1a1a1a;isolation:isolate}
+.plate::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(85% 70% at 20% 15%, #3a2f28, transparent 60%),
+  radial-gradient(90% 70% at 85% 90%, #24211c, transparent 55%),
+  linear-gradient(160deg,#141414,#232019 60%,#161311)}
+.plate::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);background-size:3px 3px;mix-blend-mode:overlay}
+.plate-caption{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;margin-top:10px}
 
-/* ===== HERO ===== */
-.hero{padding-block:64px 40px;position:relative}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-@media (max-width:920px){.hero-grid{grid-template-columns:1fr}}
-.hero h1{font-size:clamp(40px,6vw,78px);max-width:12ch}
-.hero .lede{margin-top:22px;font-size:18px}
-.hero-audience{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-.audience-card{flex:1;min-width:220px;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;background:var(--surface);transition:border-color .2s,transform .2s}
-.audience-card:hover{border-color:var(--foreground);transform:translateY(-2px)}
-.audience-card .meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.audience-card h3{font-family:var(--display);font-size:22px;margin-top:6px}
-.audience-card p{margin-top:6px;font-size:13.5px;color:var(--muted)}
-.audience-card .btn{margin-top:14px}
+/* ---- HERO ---- */
+.hero{padding-block:56px 0}
+.hero-grid{display:grid;grid-template-columns:.62fr 1fr;gap:0}
+@media (max-width:960px){.hero-grid{grid-template-columns:1fr}}
+.hero-copy{padding-block:40px 56px;padding-right:56px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center}
+@media (max-width:960px){.hero-copy{border-right:none;padding-right:0}}
+.hero-issue{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:center}
+.hero-issue span:nth-child(2){width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(46px,6.4vw,84px);line-height:.98;letter-spacing:-.015em;margin-top:20px}
+.hero .lede{margin-top:24px;font-size:18px}
+.hero-cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn-fill{background:var(--ink);color:var(--paper);padding:15px 26px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;transition:background .2s}
+.btn-fill:hover{background:var(--accent)}
+.hero-stats{display:flex;gap:40px;margin-top:52px;padding-top:28px;border-top:1px solid var(--rule)}
+.hero-stats .stat b{font-family:var(--serif);font-size:30px;display:block;font-weight:600}
+.hero-stats .stat span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
-.searchbar{display:flex;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:8px 8px 8px 20px;box-shadow:var(--shadow-md);margin-top:30px;max-width:640px}
-.searchbar input{border:none;outline:none;flex:1;font:inherit;font-size:15px;background:transparent}
-.searchbar input::placeholder{color:#9a9a9a}
-.chipsrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.chip{border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--muted);background:var(--surface)}
-.chip:hover{border-color:var(--foreground);color:var(--foreground)}
+.hero-plate{aspect-ratio:3/4;padding:40px}
+@media (max-width:960px){.hero-plate{aspect-ratio:4/3}}
+.hero-plate-in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.hero-quote{font-family:var(--serif);font-style:italic;font-weight:500;color:#f4f1ea;font-size:clamp(20px,2vw,26px);line-height:1.35;max-width:20ch}
+.hero-quote-by{color:#a9a49a;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:16px}
+.hero-search{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;gap:10px;padding:14px 18px}
+.hero-search input{background:transparent;border:none;outline:none;color:#fff;font:inherit;font-size:14px;flex:1}
+.hero-search input::placeholder{color:#a9a49a}
+.hero-search button{color:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;border-left:1px solid rgba(255,255,255,.25);padding-left:14px}
 
-.hero-art{position:relative;aspect-ratio:1/1.05;border-radius:var(--radius-xl);overflow:hidden;background:linear-gradient(160deg,#161618,#0E0E10 55%,#241a30);isolation:isolate}
-.hero-art::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(60% 50% at 80% 10%, rgba(255,61,175,.5), transparent 60%),
-  radial-gradient(55% 45% at 15% 85%, rgba(139,92,246,.55), transparent 60%);
-  mix-blend-mode:screen}
-.hero-art .grain{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);background-size:3px 3px;opacity:.5}
-.floatcard{position:absolute;background:rgba(255,255,255,.96);color:var(--ink);border-radius:var(--radius-md);padding:14px 16px;box-shadow:var(--shadow-md);font-size:13px;display:flex;align-items:center;gap:10px}
-.floatcard b{display:block;font-size:14.5px}
-.fc1{top:9%;left:8%}
-.fc2{bottom:11%;right:7%;flex-direction:column;align-items:flex-start;gap:2px}
-.fc2 .stars{color:var(--lime);letter-spacing:2px}
-.avatarcirc{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;flex:none}
+.split-cta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+@media (max-width:720px){.split-cta{grid-template-columns:1fr}}
+.split-cta > div{padding:34px 56px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.split-cta > div:first-child{border-right:1px solid var(--rule)}
+@media (max-width:720px){.split-cta > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.split-cta .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.split-cta h3{font-family:var(--serif);font-size:22px;font-weight:600;margin-top:6px}
+.split-cta .arrow{font-size:22px}
 
-.hero-stats{display:flex;gap:var(--s7);margin-top:52px;flex-wrap:wrap}
-.stat b{font-family:var(--display);font-size:clamp(28px,3.4vw,42px);display:block}
-.stat span{font-size:12.5px;color:var(--muted)}
+/* ---- CONTENTS (categories) ---- */
+.contents-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.contents-list{margin-top:8px}
+.contents-row{display:grid;grid-template-columns:64px 1fr auto auto;align-items:center;gap:24px;padding:22px 0;border-top:1px solid var(--rule);transition:padding-left .25s ease}
+.contents-row:last-child{border-bottom:1px solid var(--rule)}
+.contents-row:hover{padding-left:10px;background:linear-gradient(90deg,rgba(17,17,17,.03),transparent)}
+.contents-num{font-family:var(--serif);font-size:14px;color:var(--muted)}
+.contents-name{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.4vw,28px)}
+.contents-count{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.contents-go{font-size:18px;transition:transform .25s ease}
+.contents-row:hover .contents-go{transform:translateX(6px)}
+@media (max-width:640px){.contents-row{grid-template-columns:40px 1fr auto;gap:14px}.contents-count{display:none}}
 
-/* ===== CATEGORIES ===== */
-.catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:44px}
-@media (max-width:920px){.catgrid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.catgrid{grid-template-columns:1fr}}
-.catcard{background:var(--surface);padding:26px 22px;display:flex;flex-direction:column;gap:14px;transition:background .2s}
-.catcard:hover{background:#fbfbf9}
-.catcard .ic{background:var(--background)}
-.catcard h3{font-family:var(--display);font-size:20px}
-.catcard span{font-size:12.5px;color:var(--muted)}
+/* ---- HOW IT WORKS (masthead-style two columns) ---- */
+.tabs{display:flex;gap:0;border:1px solid var(--ink);width:fit-content;margin-top:22px}
+.tabbtn{padding:10px 22px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.tabbtn.active{background:var(--ink);color:var(--paper)}
+.stepscol{margin-top:44px}
+.steprow{display:grid;grid-template-columns:90px 1fr;gap:28px;padding-block:30px;border-top:1px solid var(--rule)}
+.steprow:last-child{border-bottom:1px solid var(--rule)}
+.steprow .num{font-family:var(--serif);font-style:italic;font-size:40px;color:var(--rule)}
+.steprow h3{font-family:var(--serif);font-size:22px;font-weight:600}
+.steprow p{margin-top:8px;color:var(--muted);max-width:56ch}
 
-/* ===== HOW IT WORKS ===== */
-.tabs{display:inline-flex;border:1px solid var(--border);border-radius:999px;padding:4px;margin-top:20px}
-.tabbtn{padding:9px 20px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--muted)}
-.tabbtn.active{background:var(--ink);color:#fff}
-.stepsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:32px}
-@media (max-width:820px){.stepsgrid{grid-template-columns:1fr}}
-.stepcard{background:var(--surface);padding:30px 26px}
-.stepcard .num{font-family:var(--display);font-size:36px;color:var(--border);font-style:italic}
-.stepcard h3{font-size:18px;font-weight:700;margin-top:8px}
-.stepcard p{margin-top:8px;color:var(--muted);font-size:14px}
+/* ---- FEATURED (The Edit) ---- */
+.edit-head{margin-bottom:8px}
+.editgrid{margin-top:24px}
+.editrow{display:grid;grid-template-columns:.9fr 1.5fr;gap:44px;padding-block:44px;border-top:1px solid var(--rule)}
+.editrow:last-child{border-bottom:1px solid var(--rule)}
+@media (max-width:820px){.editrow{grid-template-columns:1fr;gap:20px}}
+.edit-plate{aspect-ratio:4/5}
+.edit-body .role{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.edit-body h3{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,38px);margin-top:10px}
+.edit-body .desc{margin-top:14px;color:var(--muted);max-width:56ch}
+.edit-meta{display:flex;gap:30px;margin-top:24px;flex-wrap:wrap}
+.edit-meta div span{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.edit-meta div b{font-family:var(--serif);font-size:20px;font-weight:600}
+.edit-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.edit-tags span{font-size:11px;letter-spacing:.04em;border:1px solid var(--rule);padding:5px 12px;color:var(--muted)}
 
-/* ===== FREELANCERS ===== */
-.talentgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
-@media (max-width:1000px){.talentgrid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.talentgrid{grid-template-columns:1fr}}
-.tcard{border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;background:var(--surface);transition:transform .2s,box-shadow .2s}
-.tcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
-.tcard-top{display:flex;gap:12px;align-items:center}
-.avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-size:19px;flex:none}
-.tcard h3{font-size:15.5px}
-.tcard .role{font-size:12.5px;color:var(--muted)}
-.rating{margin-top:14px;display:flex;align-items:center;gap:6px;font-size:13px}
-.rating .stars{color:var(--lime);letter-spacing:1px}
-.tcard-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.tcard-tags .tag{padding:3px 10px;font-size:11.5px}
-.tcard-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--border-soft)}
-.tcard-foot b{font-family:var(--display);font-size:17px}
-.avail{font-size:11px;padding:4px 9px;border-radius:999px;background:rgba(26,158,92,.1);color:var(--green);font-weight:600}
-.avail.busy{background:rgba(17,17,17,.06);color:var(--muted)}
+/* ---- BRIEFS (projects) ---- */
+.briefrow{display:grid;grid-template-columns:1fr auto auto auto;gap:28px;align-items:center;padding:26px 0;border-top:1px solid var(--rule)}
+.briefrow:last-child{border-bottom:1px solid var(--rule)}
+@media (max-width:840px){.briefrow{grid-template-columns:1fr;gap:10px}}
+.brief-title{font-family:var(--serif);font-weight:600;font-size:20px}
+.brief-cat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:4px}
+.brief-col span{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.brief-col b{font-family:var(--serif);font-weight:600;font-size:16px}
 
-/* ===== PROJECTS ===== */
-.projlist{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:36px}
-.projrow{background:var(--surface);padding:22px 26px;display:grid;grid-template-columns:1.6fr .8fr .7fr .6fr auto;gap:18px;align-items:center}
-@media (max-width:880px){.projrow{grid-template-columns:1fr;gap:8px}}
-.projrow h3{font-size:16px}
-.projrow .cat{font-size:12px;color:var(--muted);margin-top:4px}
-.projcol .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700}
-.projcol .val{font-size:14px;margin-top:3px;font-weight:600}
-.projrow .skills{display:flex;gap:6px;flex-wrap:wrap}
+/* ---- PRICING (spec sheet) ---- */
+.specgrid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-top:36px}
+@media (max-width:780px){.specgrid{grid-template-columns:1fr}}
+.speccol{padding:36px 44px}
+.speccol:first-child{border-right:1px solid var(--rule)}
+@media (max-width:780px){.speccol:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.speccol .kicker{margin-bottom:16px}
+.spec-amt{font-family:var(--serif);font-size:52px;font-weight:600}
+.specrow{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--rule-soft);font-size:14px}
+.specrow span:last-child{color:var(--muted)}
 
-/* ===== PRICING ===== */
-.pricegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px}
-@media (max-width:780px){.pricegrid{grid-template-columns:1fr}}
-.pricecard{border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px 30px;background:var(--surface)}
-.pricecard.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
-.pricecard .meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted)}
-.pricecard.dark .meta{color:#a9a9ad}
-.pricecard .amt{font-family:var(--display);font-size:44px;margin-top:10px}
-.pricecard ul{margin-top:18px;display:flex;flex-direction:column;gap:10px}
-.pricecard li{font-size:14px;display:flex;gap:10px;align-items:flex-start;color:var(--muted)}
-.pricecard.dark li{color:#c9c9cd}
-.pricecard li svg{flex:none;margin-top:2px}
-
-/* ===== STATS BAND ===== */
-.statband{background:var(--ink);color:#fff;border-radius:var(--radius-xl);padding:52px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+/* ---- STATS ---- */
+.statband{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
 @media (max-width:780px){.statband{grid-template-columns:repeat(2,1fr)}}
-.statband .stat b{color:#fff}
-.statband .stat span{color:#a9a9ad}
+.statband > div{padding:36px 30px;border-left:1px solid var(--rule)}
+.statband > div:first-child{border-left:none}
+@media (max-width:780px){.statband > div:nth-child(odd){border-left:none}}
+.statband b{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);display:block;font-weight:600}
+.statband span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
-/* ===== TESTIMONIALS ===== */
-.testigrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
-@media (max-width:920px){.testigrid{grid-template-columns:1fr}}
-.testi{border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;background:var(--surface);display:flex;flex-direction:column;gap:16px}
-.testi p{font-family:var(--display);font-size:19px;line-height:1.4}
-.testi .who{display:flex;align-items:center;gap:10px;margin-top:auto}
-.testi .who b{font-size:13.5px;display:block}
-.testi .who span{font-size:12px;color:var(--muted)}
+/* ---- PULL QUOTES (testimonials) ---- */
+.quoterow{padding-block:48px;border-top:1px solid var(--rule);display:grid;grid-template-columns:160px 1fr;gap:32px}
+.quoterow:last-child{border-bottom:1px solid var(--rule)}
+@media (max-width:720px){.quoterow{grid-template-columns:1fr;gap:12px}}
+.quoterow .who{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.quoterow .who b{display:block;font-family:var(--serif);font-size:15px;color:var(--ink);text-transform:none;letter-spacing:0;margin-bottom:4px}
+.quoterow p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(20px,2.4vw,28px);line-height:1.4}
 
-/* ===== FINAL CTA ===== */
-.finalcta{background:linear-gradient(120deg,#12101a,#1c1424 55%,#241a30);border-radius:var(--radius-xl);padding:64px 48px;color:#fff;position:relative;overflow:hidden}
-.finalcta::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 85% 20%, rgba(255,61,175,.35), transparent 60%)}
-.finalcta-inner{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-@media (max-width:820px){.finalcta-inner{grid-template-columns:1fr}.finalcta{padding:44px 26px}}
-.finalcta h2{font-size:clamp(28px,4vw,44px);max-width:14ch}
-.finalcta .btns{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
-.finalcta .btn-light{background:#fff;color:var(--ink)}
-.finalcta .btn-outline{border:1px solid rgba(255,255,255,.35);color:#fff}
+/* ---- FINAL ---- */
+.finalcta{padding-block:120px;text-align:center}
+.finalcta h2{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6vw,80px);letter-spacing:-.01em;max-width:16ch;margin-inline:auto}
+.finalcta .btns{display:flex;gap:16px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.btn-outline-ink{border:1px solid var(--ink);padding:15px 26px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.btn-outline-ink:hover{background:var(--ink);color:var(--paper)}
 
-/* ===== FOOTER ===== */
-footer{border-top:1px solid var(--border);padding-block:56px 32px;margin-top:40px}
-.footgrid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px}
+/* ---- FOOTER (colophon) ---- */
+footer{border-top:1px solid var(--ink)}
+.footgrid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px;padding-block:56px}
 @media (max-width:820px){.footgrid{grid-template-columns:repeat(2,1fr)}}
-.footgrid h4{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:14px}
-.footgrid ul{display:flex;flex-direction:column;gap:10px}
-.footgrid a{font-size:14px;color:#2a2a2a}
-.footgrid a:hover{color:var(--magenta)}
-.footbottom{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted);flex-wrap:wrap;gap:12px}
+.footgrid h4{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px}
+.footgrid ul{display:flex;flex-direction:column;gap:11px}
+.footgrid a{font-size:13.5px}
+.footgrid a:hover{color:var(--accent)}
+.foot-word{font-family:var(--serif);font-weight:700;font-size:26px}
+.footbottom{border-top:1px solid var(--rule);padding-block:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
+<div class="masthead-top">
+  <div class="container">
+    <span id="todayLbl">Toshkent · 24 Sentabr, 2026</span>
+    <span>№ 001 — Frilanser platformasi</span>
+  </div>
+</div>
+
 <header class="header" id="header">
   <div class="container header-inner">
-    <a href="#top" class="logo"><b>Freela</b><span class="badge">Frilanser platformasi</span></a>
     <nav class="nav" aria-label="Asosiy">
-      <a href="#categories">Kategoriyalar</a>
-      <a href="#projects">Loyihalar</a>
-      <a href="#talent">Frilanserlar</a>
-      <a href="#how">Qanday ishlaydi</a>
-      <a href="#pricing">Narxlar</a>
+      <a href="#contents">Yo'nalishlar</a>
+      <a href="#briefs">Loyihalar</a>
+      <a href="#edit">Frilanserlar</a>
     </nav>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menyu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <a href="#top" class="wordmark">FREELA</a>
     <div class="header-actions">
-      <a class="btn btn-ghost btn-sm hdr-cta-desktop" href="#join-client">Loyiha joylash</a>
-      <a class="btn btn-dark btn-sm hdr-cta-desktop" href="#join-freelancer">Frilanser bo'lish</a>
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menyu">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
+      <a class="hdr-link" href="#pricing">Narxlar</a>
+      <a class="btn-line" href="#join">Boshlash</a>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <div class="container">
-      <a href="#categories">Kategoriyalar</a>
-      <a href="#projects">Loyihalar</a>
-      <a href="#talent">Frilanserlar</a>
-      <a href="#how">Qanday ishlaydi</a>
+      <a href="#contents">Yo'nalishlar</a>
+      <a href="#briefs">Loyihalar</a>
+      <a href="#edit">Frilanserlar</a>
       <a href="#pricing">Narxlar</a>
-      <a class="btn btn-ghost btn-sm" href="#join-client">Loyiha joylash</a>
-      <a class="btn btn-dark btn-sm" href="#join-freelancer">Frilanser bo'lish</a>
+      <a href="#join">Boshlash</a>
     </div>
   </div>
 </header>
@@ -283,116 +261,104 @@ footer{border-top:1px solid var(--border);padding-block:56px 32px;margin-top:40p
   <!-- ============ HERO ============ -->
   <section class="hero container">
     <div class="hero-grid">
-      <div>
-        <p class="eyebrow">O'zbekistondagi frilanser platformasi</p>
-        <h1 class="display hero-h1">To'g'ri ishni <span class="serif-em">to'g'ri odam</span> bilan bog'laymiz.</h1>
-        <p class="lede">Freela — dasturchi, dizayner, marketolog, video montajchi va yana o'ndan ortiq sohadagi mutaxassislarni buyurtmachilar bilan bog'laydigan frilanser bozori. Loyiha joylang yoki mutaxassis sifatida ishga kiriting.</p>
-
-        <div class="searchbar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a9a9a" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input type="text" id="heroSearch" placeholder="Kasb yoki ko'nikma qidiring: logotip dizayni, Python...">
-          <button class="btn btn-grad btn-sm" id="heroSearchBtn">Qidirish</button>
+      <div class="hero-copy">
+        <div class="hero-issue"><span>Ish № 001</span><span></span><span>Frilanser platformasi</span></div>
+        <h1>Ishni <span class="serif-i">to'g'ri</span><br>odamga topshiring.</h1>
+        <p class="lede">Freela — dasturchi, dizayner, marketolog va o'ndan ortiq sohadagi mutaxassislarni buyurtmachilar bilan bog'laydigan frilanser bozori.</p>
+        <div class="hero-cta-row">
+          <a class="btn-fill" href="#join-freelancer">Frilanser sifatida boshlash</a>
+          <a class="btn-outline-ink" href="#join-client">Loyiha joylash</a>
         </div>
-        <div class="chipsrow">
-          <span class="chip">Veb-dasturlash</span>
-          <span class="chip">Grafik dizayn</span>
-          <span class="chip">SMM</span>
-          <span class="chip">Video montaj</span>
-          <span class="chip">Tarjima</span>
-        </div>
-
-        <div class="hero-audience">
-          <div class="audience-card">
-            <div class="meta">Buyurtmachiga</div>
-            <h3>Loyiha joylang</h3>
-            <p>Vazifangizni tasvirlang — bir necha soat ichida takliflar kela boshlaydi.</p>
-            <a class="btn btn-dark btn-sm" href="#join-client" id="join-client">Loyiha joylash</a>
-          </div>
-          <div class="audience-card">
-            <div class="meta">Mutaxassisga</div>
-            <h3>Frilanser bo'ling</h3>
-            <p>Profil yarating, portfolio qo'shing va mos loyihalarga ariza bering.</p>
-            <a class="btn btn-ghost btn-sm" href="#join-freelancer" id="join-freelancer">Ro'yxatdan o'tish</a>
-          </div>
-        </div>
-
         <div class="hero-stats">
-          <div class="stat"><b>24 600+</b><span>faol frilanser</span></div>
+          <div class="stat"><b>24 600+</b><span>frilanser</span></div>
           <div class="stat"><b>8 300+</b><span>bajarilgan loyiha</span></div>
-          <div class="stat"><b>4.8 / 5</b><span>o'rtacha reyting</span></div>
+          <div class="stat"><b>4.8</b><span>o'rtacha reyting</span></div>
         </div>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <div class="grain"></div>
-        <div class="floatcard fc1">
-          <div class="avatarcirc" style="background:linear-gradient(135deg,var(--violet),var(--magenta))">MY</div>
-          <div><b>Yangi taklif</b>Landing sahifa dizayni</div>
+      <div class="plate hero-plate">
+        <div class="hero-plate-in">
+          <div>
+            <div class="hero-quote">"Platformaga qo'ygan birinchi loyiham 48 soat ichida frilanser topdi."</div>
+            <div class="hero-quote-by">— Aziz Nazarov, startap asoschisi</div>
+          </div>
+          <div class="hero-search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a9a49a" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="text" id="heroSearch" placeholder="Kasb yoki ko'nikma qidiring...">
+            <button id="heroSearchBtn">Izlash</button>
+          </div>
         </div>
-        <div class="floatcard fc2">
-          <div class="stars">★★★★★</div>
-          <b>"3 kunda ideal natija"</b>
-          <span style="color:var(--muted)">— Buyurtmachi, IT-startap</span>
-        </div>
+      </div>
+    </div>
+
+    <div class="split-cta">
+      <div>
+        <div><span class="lbl">Buyurtmachiga</span><h3>Loyiha joylang, takliflar keladi</h3></div>
+        <a class="arrow" href="#join-client" id="join-client">→</a>
+      </div>
+      <div>
+        <div><span class="lbl">Mutaxassisga</span><h3>Profil yarating, ishga kiring</h3></div>
+        <a class="arrow" href="#join-freelancer" id="join-freelancer">→</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ CATEGORIES ============ -->
-  <section id="categories" class="section container reveal" style="scroll-margin-top:90px">
-    <p class="eyebrow">Yo'nalishlar</p>
-    <h2 class="display h2" style="margin-top:12px">Har qanday loyiha uchun <span class="serif-em">mutaxassis toping.</span></h2>
-    <div class="catgrid" id="catgrid"></div>
+  <!-- ============ CONTENTS / CATEGORIES ============ -->
+  <section id="contents" class="section container reveal" style="scroll-margin-top:110px">
+    <div class="contents-head">
+      <div>
+        <p class="kicker">Mundarija</p>
+        <h2 class="h2" style="margin-top:14px">Yo'nalishlar bo'yicha <span class="serif-i">mutaxassislar.</span></h2>
+      </div>
+      <p class="lede" style="max-width:34ch">Har bir yo'nalishda ro'yxatdan o'tgan frilanserlar soni ko'rsatilgan — kerakli sohani tanlang.</p>
+    </div>
+    <div class="contents-list" id="contentsList"></div>
   </section>
 
   <!-- ============ HOW IT WORKS ============ -->
-  <section id="how" class="section container reveal" style="scroll-margin-top:90px;padding-top:0">
-    <p class="eyebrow">Jarayon</p>
-    <h2 class="display h2" style="margin-top:12px">Qanday <span class="serif-em">ishlaydi.</span></h2>
+  <section id="how" class="section-tight container reveal" style="scroll-margin-top:110px">
+    <p class="kicker">Jarayon</p>
+    <h2 class="h2" style="margin-top:14px">Qanday <span class="serif-i">ishlaydi.</span></h2>
     <div class="tabs" role="tablist" aria-label="Auditoriya tanlash">
-      <button class="tabbtn active" data-tab="client" role="tab" aria-selected="true">Buyurtmachi uchun</button>
-      <button class="tabbtn" data-tab="freelancer" role="tab" aria-selected="false">Frilanser uchun</button>
+      <button class="tabbtn active" data-tab="client" role="tab" aria-selected="true">Buyurtmachi</button>
+      <button class="tabbtn" data-tab="freelancer" role="tab" aria-selected="false">Frilanser</button>
     </div>
-    <div class="stepsgrid" id="stepsgrid"></div>
+    <div class="stepscol" id="stepsCol"></div>
   </section>
 
-  <!-- ============ FEATURED FREELANCERS ============ -->
-  <section id="talent" class="section container reveal" style="scroll-margin-top:90px">
-    <p class="eyebrow">Tanlangan mutaxassislar</p>
-    <h2 class="display h2" style="margin-top:12px">Yuqori baholangan <span class="serif-em">frilanserlar.</span></h2>
-    <div class="talentgrid" id="talentgrid"></div>
+  <!-- ============ THE EDIT (freelancers) ============ -->
+  <section id="edit" class="section container reveal" style="scroll-margin-top:110px">
+    <p class="kicker">Tahrir tanlovi</p>
+    <h2 class="h2 edit-head" style="margin-top:14px">Yuqori baholangan <span class="serif-i">frilanserlar.</span></h2>
+    <div class="editgrid" id="editGrid"></div>
   </section>
 
-  <!-- ============ OPEN PROJECTS ============ -->
-  <section id="projects" class="section container reveal" style="scroll-margin-top:90px;padding-top:0">
-    <p class="eyebrow">Ochiq loyihalar</p>
-    <h2 class="display h2" style="margin-top:12px">Hozir ariza <span class="serif-em">kutayotgan ishlar.</span></h2>
-    <div class="projlist" id="projlist"></div>
+  <!-- ============ BRIEFS (projects) ============ -->
+  <section id="briefs" class="section-tight container reveal" style="scroll-margin-top:110px">
+    <p class="kicker">Ochiq topshiriqlar</p>
+    <h2 class="h2" style="margin-top:14px">Hozir ariza <span class="serif-i">kutmoqda.</span></h2>
+    <div id="briefList" style="margin-top:24px"></div>
   </section>
 
   <!-- ============ PRICING ============ -->
-  <section id="pricing" class="section container reveal" style="scroll-margin-top:90px">
-    <p class="eyebrow">Narxlar</p>
-    <h2 class="display h2" style="margin-top:12px">Shaffof <span class="serif-em">komissiya tizimi.</span></h2>
-    <p class="lede" style="margin-top:16px">Buyurtmachi uchun platformadan foydalanish bepul. Frilanser ishlab topgan summadan bosqichma-bosqich pasayadigan komissiya oladi.</p>
-    <div class="pricegrid">
-      <div class="pricecard">
-        <div class="meta">Buyurtmachi</div>
-        <div class="amt">Bepul</div>
-        <ul>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A9E5C" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Loyiha joylash — bepul</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A9E5C" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Cheksiz takliflarni ko'rish</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A9E5C" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Xavfsiz to'lov (kafolatlangan depozit)</li>
-        </ul>
+  <section id="pricing" class="section-tight container reveal" style="scroll-margin-top:110px">
+    <p class="kicker">Narxlar</p>
+    <h2 class="h2" style="margin-top:14px">Shaffof <span class="serif-i">komissiya.</span></h2>
+    <p class="lede" style="margin-top:16px">Buyurtmachi uchun bepul. Frilanser topgan summadan bosqichma-bosqich pasayadigan komissiya oladi.</p>
+    <div class="specgrid">
+      <div class="speccol">
+        <p class="kicker">Buyurtmachi</p>
+        <div class="spec-amt">Bepul</div>
+        <div class="specrow"><span>Loyiha joylash</span><span>0%</span></div>
+        <div class="specrow"><span>Takliflarni ko'rish</span><span>Cheksiz</span></div>
+        <div class="specrow"><span>To'lov himoyasi</span><span>Kafolatlangan depozit</span></div>
       </div>
-      <div class="pricecard dark">
-        <div class="meta">Frilanser komissiyasi</div>
-        <div class="amt">10–20%</div>
-        <ul>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DFFF45" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Bitta mijoz bilan $500 gacha — 20%</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DFFF45" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>$500–$5000 oralig'ida — 10%</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DFFF45" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>$5000 dan yuqori — 5%</li>
-        </ul>
+      <div class="speccol">
+        <p class="kicker">Frilanser komissiyasi</p>
+        <div class="spec-amt">10–20%</div>
+        <div class="specrow"><span>$500 gacha</span><span>20%</span></div>
+        <div class="specrow"><span>$500–$5 000</span><span>10%</span></div>
+        <div class="specrow"><span>$5 000 dan yuqori</span><span>5%</span></div>
       </div>
     </div>
   </section>
@@ -400,32 +366,28 @@ footer{border-top:1px solid var(--border);padding-block:56px 32px;margin-top:40p
   <!-- ============ STATS ============ -->
   <section class="container reveal">
     <div class="statband">
-      <div class="stat"><b>24 600+</b><span>ro'yxatdan o'tgan frilanser</span></div>
-      <div class="stat"><b>12</b><span>yo'nalish kategoriyasi</span></div>
-      <div class="stat"><b>8 300+</b><span>bajarilgan loyiha</span></div>
-      <div class="stat"><b>96%</b><span>mijozlar mamnunligi</span></div>
+      <div><b>24 600+</b><span>ro'yxatdan o'tgan frilanser</span></div>
+      <div><b>12</b><span>yo'nalish kategoriyasi</span></div>
+      <div><b>8 300+</b><span>bajarilgan loyiha</span></div>
+      <div><b>96%</b><span>mijozlar mamnunligi</span></div>
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS ============ -->
-  <section class="section container reveal">
-    <p class="eyebrow">Fikrlar</p>
-    <h2 class="display h2" style="margin-top:12px">Mijozlar va <span class="serif-em">frilanserlar aytadi.</span></h2>
-    <div class="testigrid" id="testigrid"></div>
+  <!-- ============ PULL QUOTES ============ -->
+  <section class="section-tight container reveal">
+    <p class="kicker">Fikrlar</p>
+    <h2 class="h2" style="margin-top:14px">Mijozlar va <span class="serif-i">frilanserlar.</span></h2>
+    <div id="quoteList" style="margin-top:20px"></div>
   </section>
 
   <!-- ============ FINAL CTA ============ -->
-  <section class="container reveal" style="padding-bottom:96px">
+  <section id="join" class="container reveal" style="scroll-margin-top:110px">
     <div class="finalcta">
-      <div class="finalcta-inner">
-        <div>
-          <p class="eyebrow" style="color:#c9c9cd">Boshlashga tayyormisiz?</p>
-          <h2 class="display" style="margin-top:12px;color:#fff">Bugun birinchi loyihangizni yarating.</h2>
-        </div>
-        <div class="btns">
-          <a class="btn btn-light" href="#join-freelancer">Frilanser sifatida boshlash</a>
-          <a class="btn btn-outline" href="#join-client">Loyiha joylash</a>
-        </div>
+      <p class="kicker" style="justify-content:center">Boshlashga tayyormisiz</p>
+      <h2 style="margin-top:20px">Bugun birinchi loyihangizni yarating.</h2>
+      <div class="btns">
+        <a class="btn-fill" href="#join-freelancer">Frilanser sifatida boshlash</a>
+        <a class="btn-outline-ink" href="#join-client">Loyiha joylash</a>
       </div>
     </div>
   </section>
@@ -436,70 +398,54 @@ footer{border-top:1px solid var(--border);padding-block:56px 32px;margin-top:40p
   <div class="container">
     <div class="footgrid">
       <div>
-        <a href="#top" class="logo"><b>Freela</b></a>
+        <span class="foot-word">FREELA</span>
         <p style="margin-top:14px;color:var(--muted);font-size:13.5px;max-width:32ch">O'zbekistondagi frilanser platformasi — mutaxassislarni loyihalar bilan bog'laymiz.</p>
       </div>
       <div>
-        <h4>Frilanserlar uchun</h4>
-        <ul><li><a href="#join-freelancer">Ro'yxatdan o'tish</a></li><li><a href="#projects">Loyiha topish</a></li><li><a href="#pricing">Komissiya</a></li></ul>
+        <h4>Frilanserlar</h4>
+        <ul><li><a href="#join-freelancer">Ro'yxatdan o'tish</a></li><li><a href="#briefs">Loyiha topish</a></li><li><a href="#pricing">Komissiya</a></li></ul>
       </div>
       <div>
-        <h4>Buyurtmachilar uchun</h4>
-        <ul><li><a href="#join-client">Loyiha joylash</a></li><li><a href="#talent">Frilanser topish</a></li><li><a href="#how">Qanday ishlaydi</a></li></ul>
+        <h4>Buyurtmachilar</h4>
+        <ul><li><a href="#join-client">Loyiha joylash</a></li><li><a href="#edit">Frilanser topish</a></li><li><a href="#how">Jarayon</a></li></ul>
       </div>
       <div>
-        <h4>Kategoriyalar</h4>
-        <ul><li><a href="#categories">Dasturlash</a></li><li><a href="#categories">Dizayn</a></li><li><a href="#categories">Marketing</a></li></ul>
+        <h4>Yo'nalishlar</h4>
+        <ul><li><a href="#contents">Dasturlash</a></li><li><a href="#contents">Dizayn</a></li><li><a href="#contents">Marketing</a></li></ul>
       </div>
       <div>
         <h4>Kompaniya</h4>
-        <ul><li><a href="#top">Biz haqimizda</a></li><li><a href="#top">Aloqa</a></li><li><a href="#top">Yordam markazi</a></li></ul>
+        <ul><li><a href="#top">Biz haqimizda</a></li><li><a href="#top">Aloqa</a></li><li><a href="#top">Yordam</a></li></ul>
       </div>
     </div>
-    <div class="footbottom">
-      <span>© 2026 Freela. Barcha huquqlar himoyalangan.</span>
-      <span>Toshkent, O'zbekiston</span>
-    </div>
+  </div>
+  <div class="container footbottom">
+    <span>© 2026 Freela</span>
+    <span>Toshkent, O'zbekiston</span>
   </div>
 </footer>
 
 <script>
-const ICONS = {
-  dev:'<path d="M8 9 4 12l4 3"/><path d="M16 9l4 3-4 3"/><path d="M13 7l-2 10"/>',
-  design:'<circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/>',
-  marketing:'<path d="M3 12h6l3-8 4 16 3-8h2"/>',
-  video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M21 9l-5 3 5 3z"/>',
-  write:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
-  audio:'<path d="M9 18V6l8-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
-  biz:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
-  photo:'<rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/>',
-  data:'<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>',
-  edu:'<path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>',
-  fashion:'<path d="M6 4h12l-2 4H8Z"/><path d="M8 8v12h8V8"/>',
-  legal:'<path d="M12 3v18M5 8l-3 6a4 4 0 0 0 6 0Z"/><path d="M19 8l-3 6a4 4 0 0 0 6 0Z"/><path d="M5 8h14"/>',
-};
-function icon(name, stroke){
-  return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${stroke||'currentColor'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]||ICONS.biz}</svg>`;
-}
-
 const CATEGORIES = [
-  {name:"Dasturlash va IT", n:"4 820", icon:"dev"},
-  {name:"Grafik dizayn", n:"3 940", icon:"design"},
-  {name:"Marketing va SMM", n:"2 610", icon:"marketing"},
-  {name:"Video va animatsiya", n:"1 780", icon:"video"},
-  {name:"Matn va tarjima", n:"2 210", icon:"write"},
-  {name:"Ovoz va musiqa", n:"640", icon:"audio"},
-  {name:"Biznes va konsalting", n:"1 120", icon:"biz"},
-  {name:"Foto va prodakshn", n:"1 340", icon:"photo"},
-  {name:"Ma'lumotlar tahlili", n:"980", icon:"data"},
-  {name:"Ta'lim va repetitorlik", n:"1 460", icon:"edu"},
-  {name:"Moda va kreativ", n:"1 050", icon:"fashion"},
-  {name:"Huquq va moliya", n:"560", icon:"legal"},
+  {name:"Dasturlash va IT", n:"4 820"},
+  {name:"Grafik dizayn", n:"3 940"},
+  {name:"Marketing va SMM", n:"2 610"},
+  {name:"Video va animatsiya", n:"1 780"},
+  {name:"Matn va tarjima", n:"2 210"},
+  {name:"Ovoz va musiqa", n:"640"},
+  {name:"Biznes va konsalting", n:"1 120"},
+  {name:"Foto va prodakshn", n:"1 340"},
+  {name:"Ma'lumotlar tahlili", n:"980"},
+  {name:"Ta'lim va repetitorlik", n:"1 460"},
+  {name:"Moda va kreativ", n:"1 050"},
+  {name:"Huquq va moliya", n:"560"},
 ];
-document.getElementById('catgrid').innerHTML = CATEGORIES.map(c => `
-  <a class="catcard" href="#talent">
-    <div class="ic">${icon(c.icon,'#111')}</div>
-    <div><h3>${c.name}</h3><span>${c.n} frilanser</span></div>
+document.getElementById('contentsList').innerHTML = CATEGORIES.map((c,i) => `
+  <a class="contents-row" href="#edit">
+    <span class="contents-num">${String(i+1).padStart(2,'0')}</span>
+    <span class="contents-name">${c.name}</span>
+    <span class="contents-count">${c.n} frilanser</span>
+    <span class="contents-go">→</span>
   </a>`).join('');
 
 const STEPS = {
@@ -515,8 +461,8 @@ const STEPS = {
   ],
 };
 function renderSteps(tab){
-  document.getElementById('stepsgrid').innerHTML = STEPS[tab].map(s => `
-    <div class="stepcard"><div class="num">${s.n}</div><h3>${s.t}</h3><p>${s.d}</p></div>`).join('');
+  document.getElementById('stepsCol').innerHTML = STEPS[tab].map(s => `
+    <div class="steprow"><div class="num">${s.n}</div><div><h3>${s.t}</h3><p>${s.d}</p></div></div>`).join('');
 }
 renderSteps('client');
 document.querySelectorAll('.tabbtn').forEach(btn => {
@@ -527,59 +473,52 @@ document.querySelectorAll('.tabbtn').forEach(btn => {
   });
 });
 
-const GRADIENTS = ['linear-gradient(135deg,var(--violet),var(--magenta))','linear-gradient(135deg,#111,#444)','linear-gradient(135deg,#1A9E5C,#0E0E10)','linear-gradient(135deg,var(--magenta),#f59e0b)'];
 const TALENTS = [
-  {name:'Jasur Rahimov', role:'Full-stack dasturchi', rating:'4.9', rate:'$25/soat', skills:['React','Node.js','PostgreSQL'], avail:true},
-  {name:'Malika Yusupova', role:'UI/UX dizayner', rating:'5.0', rate:'$18/soat', skills:['Figma','Brend','Mobil UI'], avail:true},
-  {name:'Sardor Aliyev', role:'SMM mutaxassisi', rating:'4.8', rate:'$12/soat', skills:['Instagram','Reklama','Kontent'], avail:false},
-  {name:'Nodira Karimova', role:'Video montajchi', rating:'4.9', rate:'$20/soat', skills:['Premiere','Motion','Reels'], avail:true},
+  {name:'Jasur Rahimov', role:'Full-stack dasturchi', rating:'4.9', rate:'$25/soat', jobs:'62', skills:['React','Node.js','PostgreSQL'], desc:"Startaplar uchun MVP'dan yirik loyihalargacha bo'lgan veb-ilovalar quradi."},
+  {name:'Malika Yusupova', role:'UI/UX dizayner', rating:'5.0', rate:'$18/soat', jobs:'41', skills:['Figma','Brend','Mobil UI'], desc:"Brend identifikatsiyasidan interfeys dizaynigacha — aniq va zamonaviy uslub."},
+  {name:'Sardor Aliyev', role:'SMM mutaxassisi', rating:'4.8', rate:'$12/soat', jobs:'88', skills:['Instagram','Reklama','Kontent'], desc:"Kichik biznes uchun ijtimoiy tarmoqlarda o'sish strategiyasini quradi."},
+  {name:'Nodira Karimova', role:'Video montajchi', rating:'4.9', rate:'$20/soat', jobs:'55', skills:['Premiere','Motion','Reels'], desc:"Reklama va ta'lim kontenti uchun dinamik montaj va motion grafika."},
 ];
-document.getElementById('talentgrid').innerHTML = TALENTS.map((t,i) => `
-  <div class="tcard">
-    <div class="tcard-top">
-      <div class="avatar" style="background:${GRADIENTS[i%GRADIENTS.length]}">${t.name.split(' ').map(w=>w[0]).join('')}</div>
-      <div><h3>${t.name}</h3><div class="role">${t.role}</div></div>
+document.getElementById('editGrid').innerHTML = TALENTS.map(t => `
+  <article class="editrow">
+    <div class="plate edit-plate"></div>
+    <div class="edit-body">
+      <div class="role">${t.role}</div>
+      <h3>${t.name}</h3>
+      <p class="desc">${t.desc}</p>
+      <div class="edit-meta">
+        <div><span>Reyting</span><b>${t.rating} / 5</b></div>
+        <div><span>Stavka</span><b>${t.rate}</b></div>
+        <div><span>Bajarilgan</span><b>${t.jobs} loyiha</b></div>
+      </div>
+      <div class="edit-tags">${t.skills.map(s=>`<span>${s}</span>`).join('')}</div>
     </div>
-    <div class="rating"><span class="stars">★★★★★</span><span>${t.rating}</span></div>
-    <div class="tcard-tags">${t.skills.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
-    <div class="tcard-foot">
-      <b>${t.rate}</b>
-      <span class="avail ${t.avail?'':'busy'}">${t.avail?"Hozir bo'sh":'Band'}</span>
-    </div>
-  </div>`).join('');
+  </article>`).join('');
 
 const PROJECTS = [
-  {title:"Onlayn do'kon uchun mobil ilova", cat:'Dasturlash', budget:'$1 200–$2 000', deadline:'3 hafta', skills:['Flutter','API','UI']},
-  {title:'Brend uchun logotip va firma uslubi', cat:'Dizayn', budget:'$300–$500', deadline:'10 kun', skills:['Logotip','Brendbuk']},
-  {title:"Instagram sahifasini yuritish", cat:'Marketing', budget:'$400/oy', deadline:'Doimiy', skills:['SMM','Kontent-reja']},
-  {title:'Tanishtiruv videosi montaji', cat:'Video', budget:'$150–$250', deadline:'5 kun', skills:['Premiere','Motion']},
+  {title:"Onlayn do'kon uchun mobil ilova", cat:'Dasturlash', budget:'$1 200–$2 000', deadline:'3 hafta'},
+  {title:'Brend uchun logotip va firma uslubi', cat:'Dizayn', budget:'$300–$500', deadline:'10 kun'},
+  {title:"Instagram sahifasini yuritish", cat:'Marketing', budget:'$400/oy', deadline:'Doimiy'},
+  {title:'Tanishtiruv videosi montaji', cat:'Video', budget:'$150–$250', deadline:'5 kun'},
 ];
-document.getElementById('projlist').innerHTML = PROJECTS.map(p => `
-  <div class="projrow">
-    <div><h3>${p.title}</h3><div class="cat">${p.cat}</div></div>
-    <div class="projcol"><div class="lbl">Byudjet</div><div class="val">${p.budget}</div></div>
-    <div class="projcol"><div class="lbl">Muddat</div><div class="val">${p.deadline}</div></div>
-    <div class="skills">${p.skills.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
-    <a class="btn btn-dark btn-sm" href="#join-freelancer">Ariza berish</a>
+document.getElementById('briefList').innerHTML = PROJECTS.map(p => `
+  <div class="briefrow">
+    <div><div class="brief-title">${p.title}</div><div class="brief-cat">${p.cat}</div></div>
+    <div class="brief-col"><span>Byudjet</span><b>${p.budget}</b></div>
+    <div class="brief-col"><span>Muddat</span><b>${p.deadline}</b></div>
+    <a class="btn-outline-ink" href="#join-freelancer" style="padding:10px 18px">Ariza berish</a>
   </div>`).join('');
 
-const TESTIMONIALS = [
+const QUOTES = [
   {q:'"3 kun ichida ajoyib dizayner topdim va loyiha muddatidan oldin tugadi."', name:'Aziz Nazarov', role:'Startap asoschisi'},
   {q:'"Frilanser sifatida barqaror buyurtmalar oqimi oldim, to’lovlar har doim o’z vaqtida."', name:'Dilnoza Karimova', role:'Grafik dizayner'},
   {q:'"Xavfsiz to’lov tizimi ikkala tomon uchun ham ishonch beradi."', name:'Bekzod Nazarov', role:'Marketing menejeri'},
 ];
-document.getElementById('testigrid').innerHTML = TESTIMONIALS.map((t,i) => `
-  <div class="testi">
-    <p class="display">${t.q}</p>
-    <div class="who">
-      <div class="avatar" style="width:36px;height:36px;font-size:13px;background:${GRADIENTS[i%GRADIENTS.length]}">${t.name.split(' ').map(w=>w[0]).join('')}</div>
-      <div><b>${t.name}</b><span>${t.role}</span></div>
-    </div>
+document.getElementById('quoteList').innerHTML = QUOTES.map(t => `
+  <div class="quoterow">
+    <div class="who"><b>${t.name}</b>${t.role}</div>
+    <p>${t.q}</p>
   </div>`).join('');
-
-/* header scroll state */
-const header = document.getElementById('header');
-addEventListener('scroll', () => header.classList.toggle('is-stuck', scrollY > 8), {passive:true});
 
 /* mobile menu */
 const burger = document.getElementById('burger');
@@ -590,13 +529,13 @@ burger.addEventListener('click', () => {
 });
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-/* hero search -> scroll to categories */
+/* hero search -> scroll to contents */
 document.getElementById('heroSearchBtn').addEventListener('click', () => {
-  document.getElementById('categories').scrollIntoView({behavior:'smooth'});
+  document.getElementById('contents').scrollIntoView({behavior:'smooth'});
 });
 
 /* reveal on scroll */
-const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
